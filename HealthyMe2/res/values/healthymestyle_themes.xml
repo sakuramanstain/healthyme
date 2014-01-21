@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!-- Generated with http://android-holo-colors.com -->
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+  <style name="HealthyMeStyle" parent="android:Theme">
+
+    <item name="android:editTextStyle">@style/EditTextHealthyMeStyle</item>
+
+    <item name="android:autoCompleteTextViewStyle">@style/AutoCompleteTextViewHealthyMeStyle</item>
+
+    <item name="android:checkboxStyle">@style/CheckBoxHealthyMeStyle</item>
+
+    <item name="android:radioButtonStyle">@style/RadioButtonHealthyMeStyle</item>
+
+    <item name="android:buttonStyle">@style/ButtonHealthyMeStyle</item>
+
+    <item name="android:imageButtonStyle">@style/ImageButtonHealthyMeStyle</item>
+
+    <item name="android:spinnerStyle">@style/SpinnerHealthyMeStyle</item>
+
+    <item name="android:dropDownSpinnerStyle">@style/SpinnerHealthyMeStyle.DropDown</item>
+
+    <item name="android:spinnerDropDownItemStyle">@style/SpinnerDropDownItemHealthyMeStyle</item>
+
+    <item name="android:progressBarStyleHorizontal">@style/ProgressBarHealthyMeStyle</item>
+
+    <item name="android:seekBarStyle">@style/SeekBarHealthyMeStyle</item>
+
+    <item name="android:ratingBarStyle">@style/RatingBarHealthyMeStyle</item>
+
+    <item name="android:ratingBarStyleIndicator">@style/RatingBarBigHealthyMeStyle</item>
+
+    <item name="android:ratingBarStyleSmall">@style/RatingBarSmallHealthyMeStyle</item>
+
+    <item name="android:buttonStyleToggle">@style/ToggleHealthyMeStyle</item>
+
+    <item name="android:listViewStyle">@style/ListViewHealthyMeStyle</item>
+
+    <item name="android:listViewWhiteStyle">@style/ListViewHealthyMeStyle.White</item>
+
+    <item name="android:spinnerItemStyle">@style/SpinnerItemHealthyMeStyle</item>
+
+  </style>
+
+</resources>

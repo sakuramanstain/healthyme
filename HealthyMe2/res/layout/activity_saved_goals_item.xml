@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="wrap_content"
+              android:layout_height="match_parent">
+    
+    <LinearLayout  android:orientation="horizontal"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginTop="5dp"
+                   android:layout_marginBottom="10dp">
+        
+        <ImageView android:id="@+id/act_saved_goal_sport_image"
+                   android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:layout_gravity="center_vertical"/>
+        
+        <TextView android:id="@+id/saved_goals_item"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="20sp"
+                  android:layout_marginLeft="10dp"
+                  android:layout_gravity="center_vertical"/>
+            
+    </LinearLayout>
+    
+    <LinearLayout  android:orientation="horizontal"
+                   android:layout_width="wrap_content"
+                   android:layout_height="wrap_content"
+                   android:layout_marginLeft="35dp"
+                   android:layout_marginBottom="5dp">
+        
+        <ImageView android:id="@+id/act_saved_goal_image"
+                   android:layout_width="18dp" 
+                   android:layout_height="18dp"
+                   android:layout_gravity="center_vertical"/>
+        
+        <han.com.ui.common.MyCalibriTextView android:id="@+id/saved_goals_item_value_1" 
+                                             android:layout_width="wrap_content" 
+                                             android:layout_height="wrap_content"
+                                             android:layout_marginLeft="10dp" 
+                                             android:textSize="16sp"
+                                             android:textColor="@color/my_white"
+                                             android:layout_gravity="center_vertical"/>
+            
+    </LinearLayout>
+        
+</LinearLayout>

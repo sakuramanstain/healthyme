@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    
+    <include layout="@layout/title_for_sub_activity"/>
+
+    <EditText android:id="@+id/act_reward_name"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:hint="Enter your reward name here"
+              android:inputType="text"/>
+    
+    <LinearLayout android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:gravity="center_horizontal"
+                  android:layout_marginTop="100dp">
+        
+        <Button android:text="OK"
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:onClick="clickOk"/>
+    </LinearLayout>
+    
+</LinearLayout>

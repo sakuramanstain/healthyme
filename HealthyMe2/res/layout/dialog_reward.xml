@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="300dp"
+              android:layout_height="match_parent"
+              android:id="@+id/dialog_reward_container"
+              android:paddingTop="5dp"
+              android:paddingLeft="10dp"
+              android:paddingRight="10dp"
+              android:paddingBottom="40dp">
+
+    <LinearLayout android:orientation="horizontal"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content">
+
+        <ImageView android:src="@drawable/ic_title_reward"
+                   android:layout_width="32dp"
+                   android:layout_height="32dp"
+                   android:background="@color/my_green" />
+        
+        <TextView android:id="@+id/dialog_reward_name"
+                  style="@style/MyBigFont"
+                  android:textColor="@color/my_white"/>
+
+    </LinearLayout>
+    
+    <TextView android:id="@+id/dialog_reward_content"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:layout_marginLeft="37dp"/>
+
+</LinearLayout>

@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<resources>
+    <color name="my_gray">#9d9d9d</color>
+    <color name="my_light_gray">#e5e5e5</color>
+    <color name="my_green">#94c94a</color>
+    <color name="screen_background">#333</color>
+    <color name="display_background">#000</color>
+    <color name="my_trans_black">#80000000</color>
+    <color name="my_white">#fff</color>
+</resources>

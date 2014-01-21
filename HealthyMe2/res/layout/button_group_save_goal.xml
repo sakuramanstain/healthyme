@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+        
+    <han.com.ui.common.MyCalibriTextView android:id="@+id/button_save_new_goal"
+                                         android:layout_width="match_parent"
+                                         android:layout_height="match_parent"
+                                         android:text="Save"
+                                         android:onClick="saveGoal"
+                                         android:layout_weight="1"
+                                         android:clickable="true"
+                                         android:focusable="true"
+                                         android:background="@drawable/list_selector_holo_dark"
+                                         android:textSize="18sp"
+                                         android:gravity="center"
+                                         android:textColor="@color/my_white"/>
+    
+    <View android:layout_width="1dp"
+          android:layout_height="40dp"
+          android:layout_marginBottom="4dp"
+          android:layout_marginTop="4dp"
+          android:background="@color/my_white"/>
+    
+    <han.com.ui.common.MyCalibriTextView android:layout_width="match_parent"
+                                         android:layout_height="match_parent"
+                                         android:text="Use"
+                                         android:onClick="useGoal"
+                                         android:layout_weight="1"
+                                         android:clickable="true"
+                                         android:focusable="true"
+                                         android:background="@drawable/list_selector_holo_dark"
+                                         android:textSize="18sp"
+                                         android:gravity="center"
+                                         android:textColor="@color/my_white"/>
+        
+</LinearLayout>

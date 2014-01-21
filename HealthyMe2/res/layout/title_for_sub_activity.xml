@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content">
+
+    <View android:layout_width="match_parent"
+          android:layout_height="1dp"
+          android:background="#111"/>
+    
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent"
+                  android:layout_height="wrap_content"
+                  android:layout_marginTop="10dp"
+                  android:layout_marginBottom="10dp">
+        
+    
+        
+        
+    
+        <RelativeLayout android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+        
+            <ImageView android:id="@+id/title_sub_act_image"
+                       android:layout_width="24dp" 
+                       android:layout_height="24dp"
+                       android:layout_marginRight="5dp"
+                       android:layout_marginLeft="10dp"/>
+    
+            <han.com.ui.common.MyCalibriTextView android:id="@+id/title_sub_act_text"
+                                                 android:layout_width="wrap_content"
+                                                 android:layout_height="wrap_content"
+                                                 android:textSize="18sp"
+                                                 android:textStyle="bold"
+                                                 android:layout_toRightOf="@+id/title_sub_act_image"
+                                                 android:textColor="@color/my_white"
+                                                 android:layout_centerVertical="true"/>
+        
+            <ImageView android:id="@+id/title_sub_act_setting1"
+                       android:layout_width="24dp" 
+                       android:layout_height="24dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginTop="5dp"
+                       android:layout_alignParentRight="true"
+                       android:clickable="true"
+                       android:background="@android:drawable/list_selector_background"
+                       android:visibility="gone"/>
+        
+            <ImageView android:id="@+id/title_sub_act_setting2"
+                       android:layout_width="24dp" 
+                       android:layout_height="24dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginTop="5dp"
+                       android:layout_alignParentRight="true"
+                       android:clickable="true"
+                       android:background="@android:drawable/list_selector_background"
+                       android:visibility="gone"/>
+        
+            <ImageView android:id="@+id/title_sub_act_setting3"
+                       android:layout_width="24dp" 
+                       android:layout_height="24dp"
+                       android:layout_marginRight="10dp"
+                       android:layout_marginTop="5dp"
+                       android:layout_alignParentRight="true"
+                       android:clickable="true"
+                       android:background="@android:drawable/list_selector_background"
+                       android:visibility="gone"/>
+        
+        </RelativeLayout>
+    
+        <View android:layout_width="match_parent"
+              android:layout_height="2dp"
+              android:background="@color/my_green"
+              android:layout_marginTop="5dp"/>
+    
+    </LinearLayout>
+
+</LinearLayout>

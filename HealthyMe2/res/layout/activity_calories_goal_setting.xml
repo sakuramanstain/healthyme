@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    
+    <include layout="@layout/title_for_sub_activity"/>
+    
+    <include layout="@layout/button_choose_workout"/>  
+                  
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+        <!--occupy the rest of the room, so that it can push the button group to the bottom of window-->
+        
+        <han.com.ui.common.MyCalibriTextView android:id="@+id/act_calories_set_calories_text"
+                                             android:layout_width="wrap_content"
+                                             android:layout_height="wrap_content"
+                                             android:textSize="30sp"
+                                             android:textColor="@color/my_white"
+                                             android:layout_centerHorizontal="true"
+                                             android:layout_marginTop="20dp"/>
+        
+        <LinearLayout  android:orientation="horizontal"
+                       android:layout_width="match_parent"
+                       android:layout_height="wrap_content"
+                       android:paddingLeft="24sp"
+                       android:paddingRight="24sp"
+                       android:layout_marginTop="70dp">
+        
+            <NumberPicker android:id="@+id/act_calories_number_picker1"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"/>
+                  
+            <NumberPicker android:id="@+id/act_calories_number_picker2"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"/>
+                  
+            <NumberPicker android:id="@+id/act_calories_number_picker3"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_weight="1"/>
+        </LinearLayout>
+                
+    </RelativeLayout>
+    
+    <include layout="@layout/button_group_save_goal"/>
+    
+</LinearLayout>

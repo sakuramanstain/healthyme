@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Theme.healthyme_actionbar" parent="@android:style/Theme.Holo.Light.DarkActionBar">
+        <item name="android:actionBarItemBackground">@drawable/selectable_background_healthyme_actionbar</item>
+        <item name="android:popupMenuStyle">@style/healthyme_actionbar_PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/healthyme_actionbar_DropDownListView</item>
+        <item name="android:actionBarTabStyle">@style/healthyme_actionbar_ActionBarTabStyle</item>
+        <item name="android:actionDropDownStyle">@style/healthyme_actionbar_DropDownNav</item>
+        <item name="android:actionBarStyle">@style/healthyme_actionbar_solid_ActionBar</item>
+        <item name="android:panelBackground">@drawable/menu_hardkey_panel_healthyme_actionbar</item>
+        <!-- Light.DarkActionBar specific -->
+        <item name="android:actionBarWidgetTheme">@style/Theme.healthyme_actionbar.widget</item>
+
+    </style>
+
+    <style name="healthyme_actionbar_solid_ActionBar" parent="@android:style/Widget.Holo.Light.ActionBar.Solid.Inverse">
+        <item name="android:background">@drawable/ab_solid_healthyme_actionbar</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_healthyme_actionbar</item>
+        <item name="android:backgroundSplit">@drawable/ab_bottom_solid_healthyme_actionbar</item>
+        <item name="android:progressBarStyle">@style/healthyme_actionbar_ProgressBar</item>
+    </style>
+
+    <style name="healthyme_actionbar_transparent_ActionBar" parent="@android:style/Widget.Holo.ActionBar">
+        <item name="android:background">@drawable/ab_transparent_healthyme_actionbar</item>
+        <item name="android:progressBarStyle">@style/healthyme_actionbar_ProgressBar</item>
+    </style>
+
+    <style name="healthyme_actionbar_PopupMenu" parent="@android:style/Widget.Holo.ListPopupWindow">
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_healthyme_actionbar</item>	
+    </style>
+
+    <style name="healthyme_actionbar_DropDownListView" parent="@android:style/Widget.Holo.ListView.DropDown">
+        <item name="android:listSelector">@drawable/selectable_background_healthyme_actionbar</item>
+    </style>
+
+    <style name="healthyme_actionbar_ActionBarTabStyle" parent="@android:style/Widget.Holo.ActionBar.TabView">
+        <item name="android:background">@drawable/tab_indicator_ab_healthyme_actionbar</item>
+    </style>
+
+    <style name="healthyme_actionbar_DropDownNav" parent="@android:style/Widget.Holo.Spinner">
+        <item name="android:background">@drawable/spinner_background_ab_healthyme_actionbar</item>
+        <item name="android:popupBackground">@drawable/menu_dropdown_panel_healthyme_actionbar</item>
+        <item name="android:dropDownSelector">@drawable/selectable_background_healthyme_actionbar</item>
+    </style>
+    
+    <style name="healthyme_actionbar_ProgressBar" parent="@android:style/Widget.Holo.ProgressBar.Horizontal">
+        <item name="android:progressDrawable">@drawable/progress_horizontal_healthyme_actionbar</item>
+    </style>
+
+    <!-- this style is only referenced in a Light.DarkActionBar based theme -->
+    <style name="Theme.healthyme_actionbar.widget" parent="@android:style/Theme.Holo">
+        <item name="android:popupMenuStyle">@style/healthyme_actionbar_PopupMenu</item>
+        <item name="android:dropDownListViewStyle">@style/healthyme_actionbar_DropDownListView</item>
+    </style>
+
+</resources>

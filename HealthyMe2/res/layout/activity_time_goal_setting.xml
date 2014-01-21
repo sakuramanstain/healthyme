@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    
+    <include layout="@layout/title_for_sub_activity"/>
+    
+    <include layout="@layout/button_choose_workout"/>
+    
+    <RelativeLayout android:layout_width="match_parent"
+                    android:layout_height="0dp"
+                    android:layout_weight="1">
+        <!--occupy the rest of the room, so that it can push the button group to the bottom of window-->
+        
+        <TextView android:id="@+id/act_time_set_mins_text"
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="36sp"
+                  android:layout_centerHorizontal="true"/>
+        
+        <LinearLayout android:id="@+id/clock_container"
+                      android:layout_width="300dp"
+                      android:layout_height="300dp"
+                      android:orientation="vertical"
+                      android:layout_centerHorizontal="true"
+                      android:layout_marginTop="45dp">
+        </LinearLayout>
+        
+    </RelativeLayout>
+    
+    <include layout="@layout/button_group_save_goal"/>
+
+</LinearLayout>

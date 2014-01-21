@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/bg_gray">
+        
+    <include layout="@layout/title_for_fragment"/>
+    
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+            
+        <TableLayout android:layout_width="match_parent"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="20dp">
+        
+            <TableRow android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_horizontal"
+                      android:layout_marginBottom="10dp">
+ 
+                <TextView android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:layout_marginRight="10dp"
+                          android:layout_marginTop="5dp"
+                          android:textSize="18sp"
+                          android:textStyle="bold|italic"
+                          android:text="Last Activity"/>
+            
+                <TextView android:id="@+id/fragment_home_last_activity"
+                          android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center_horizontal"
+                      android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Finished Goals"/>
+            
+                <TextView android:id="@+id/fragment_home_finished_goals"
+                          style="@style/MyBigFont"
+                          android:textColor="@color/my_green"
+                          android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Cancelled Goals"/>
+
+                <TextView
+                    android:id="@+id/fragment_home_cancelled_goals"
+                    style="@style/MyBigFont"
+                    android:textColor="@color/my_green"
+                    android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Total Distance"/>
+
+                <TextView
+                    android:id="@+id/fragment_home_total_distance"
+                    style="@style/MyBigFont"
+                    android:textColor="@color/my_green"
+                    android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Total Time"/>
+
+                <TextView
+                    android:id="@+id/fragment_home_total_time"
+                    style="@style/MyBigFont"
+                    android:textColor="@color/my_green"
+                    android:textSize="16sp"
+                    android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Total Steps"/>
+
+                <TextView
+                    android:id="@+id/fragment_home_total_steps"
+                    style="@style/MyBigFont"
+                    android:textColor="@color/my_green"
+                    android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Total Calories"/>
+
+                <TextView
+                    android:id="@+id/fragment_home_total_calories"
+                    style="@style/MyBigFont"
+                    android:textColor="@color/my_green"
+                    android:layout_marginTop="5dp"/>
+        
+            </TableRow>
+        
+            <TableRow
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:layout_marginBottom="10dp">
+ 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginTop="5dp"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:text="Lasy Sync"/>
+            
+                <Button android:id="@+id/frag_home_sync"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Synchronize"
+                        android:textSize="10sp"/>
+        
+            </TableRow>
+        
+        </TableLayout>            
+    
+    </ScrollView>
+    
+    <EditText
+        android:id="@+id/speak_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/test_main_button2"
+        android:text="Speak Step"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    <Button
+        android:id="@+id/test_main_button3"
+        android:text="Lower Brightness"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"/>
+    
+    
+    
+</LinearLayout>

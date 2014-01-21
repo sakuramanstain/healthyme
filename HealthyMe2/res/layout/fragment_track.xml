@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent"
+              android:orientation="vertical"
+              android:background="@drawable/bg_gray">    
+    
+    <include layout="@layout/title_for_fragment"/>
+
+    <ScrollView android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1">
+    
+        <LinearLayout android:layout_width="match_parent"
+                      android:layout_height="match_parent"
+                      android:orientation="vertical">
+    
+            <RelativeLayout android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="10dp"
+                            android:layout_marginRight="10dp">
+        
+                <TextView android:id="@+id/frag_track_goal_title_area"
+                          android:text="Goal"
+                          android:layout_alignParentLeft="true"
+                          style="@style/MyBigFont"
+                          android:textColor="@color/my_green"
+                          android:layout_marginTop="5dp"
+                          android:textSize="16dp"/>
+                
+                <ImageButton android:id="@+id/frag_track_goal_button"
+                             android:layout_width="24dp"
+                             android:layout_height="24dp"
+                             android:background="@drawable/btn_add_goal_button"
+                             android:layout_marginLeft="10dp"
+                             android:layout_marginTop="5dp"
+                             android:layout_toRightOf="@+id/frag_track_goal_title_area"/>
+        
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:layout_alignParentRight="true">
+            
+                    <ImageView android:id="@+id/frag_track_sport_image"
+                               android:layout_width="24dp" 
+                               android:layout_height="24dp"
+                               android:layout_marginTop="5dp"
+                               android:layout_marginRight="5dp"/>  
+        
+                    <TextView android:id="@+id/frag_track_track_name"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="16sp"
+                              android:layout_gravity="center_vertical"/>
+        
+                </LinearLayout>
+          
+            </RelativeLayout>
+    
+            <RelativeLayout  android:layout_width="match_parent"
+                             android:layout_height="wrap_content"
+                             android:layout_marginLeft="10dp"
+                             android:layout_marginRight="10dp">
+                        
+                <LinearLayout android:id="@+id/frag_track_goal_info"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_alignParentLeft="true">
+            
+                    <TextView android:id="@+id/frag_track_goal_value"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="40sp"/>
+        
+                    <TextView android:id="@+id/frag_track_goal_unit"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="16sp"
+                              android:layout_marginLeft="5dp"/>
+        
+                </LinearLayout>
+                        
+                <TextView android:id="@+id/frag_track_sub_goal_3_value"
+                          android:layout_width="wrap_content"
+                          android:layout_height="wrap_content"
+                          android:textSize="24sp"
+                          android:textStyle="bold"
+                          android:layout_alignParentRight="true"
+                          android:layout_centerVertical="true"/>  
+        
+            </RelativeLayout>
+    
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginRight="10dp"
+                android:layout_marginTop="5dp">
+        
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:layout_alignParentLeft="true">
+            
+                    <ImageView android:id="@+id/frag_track_sub_goal_1_image"
+                               android:layout_width="24dp" 
+                               android:layout_height="24dp"
+                               android:src="@drawable/ic_track_calorie"
+                               android:layout_marginRight="5dp"/> 
+            
+                    <TextView android:id="@+id/frag_track_sub_goal_1_value"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="16sp"/>  
+            
+                </LinearLayout>
+        
+                <LinearLayout android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:orientation="horizontal"
+                              android:layout_toRightOf="@+id/frag_track_sub_goal_1_value"
+                              android:layout_marginLeft="90dp">
+            
+                    <ImageView android:id="@+id/frag_track_sub_goal_2_image"
+                               android:layout_width="24dp" 
+                               android:layout_height="24dp"
+                               android:src="@drawable/ic_track_steps"
+                               android:layout_marginRight="5dp"/>
+            
+                    <TextView android:id="@+id/frag_track_sub_goal_2_value"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:textSize="16sp"/>  
+            
+                </LinearLayout>
+                
+            </RelativeLayout>     
+        
+            <RelativeLayout
+                android:layout_width="250dp" 
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp">
+    
+                <LinearLayout android:id="@+id/frag_track_track_progress_container"
+                              android:layout_width="250dp"
+                              android:layout_height="130dp">
+                </LinearLayout>
+        
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:layout_marginTop="30dp">
+            
+                    <TextView
+                        android:id="@+id/frag_track_track_progress_value"
+                        android:textSize="40sp"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"/>   
+            
+                    <TextView
+                        android:id="@+id/frag_track_track_progress_unit"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="5dp"/>   
+            
+                </LinearLayout>
+            
+            </RelativeLayout>
+    
+            <TextView android:id="@+id/frag_track_music_name"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content"
+                      android:gravity="center"
+                      android:layout_marginBottom="5dp"
+                      android:textSize="14sp"/>
+    
+            <RelativeLayout  android:layout_width="match_parent" 
+                             android:layout_height="wrap_content">        
+        
+                <LinearLayout android:id="@+id/button_play_pause"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_centerHorizontal="true">
+            
+                    <ImageButton android:id="@+id/button_play_music"
+                                 android:layout_width="72dp"
+                                 android:layout_height="72dp"
+                                 android:background="@drawable/btn_play_button"
+                                 android:contentDescription="play music"/>
+        
+                    <ImageButton android:id="@+id/button_pause_music"
+                                 android:layout_width="72dp"
+                                 android:layout_height="72dp"
+                                 android:background="@drawable/btn_stop_button"
+                                 android:contentDescription="pause music"/>
+            
+                </LinearLayout>
+        
+            </RelativeLayout>
+    
+        </LinearLayout>
+    
+    </ScrollView>
+ 
+</LinearLayout>

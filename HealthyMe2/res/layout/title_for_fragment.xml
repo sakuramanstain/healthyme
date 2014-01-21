@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:background="@color/my_green">
+                
+    <LinearLayout android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal"
+                  android:layout_marginTop="5dp"
+                  android:layout_marginLeft="10dp">
+                    
+        <han.com.ui.common.MyCalibriTextView android:id="@+id/title_fragment_text"
+                                             android:layout_width="wrap_content"
+                                             android:layout_height="wrap_content"
+                                             android:textSize="24sp"
+                                             android:layout_alignParentLeft="true"
+                                             android:typeface="serif"
+                                             android:textStyle="bold"
+                                             android:textColor="@color/my_white"/>
+        
+    </LinearLayout>
+                
+    <LinearLayout  android:id="@+id/fragment_setting_item_1"
+                   android:layout_width="wrap_content"
+                   android:layout_height="fill_parent"
+                   android:orientation="horizontal"
+                   android:padding="10dp"
+                   android:clickable="true"
+                   android:background="@android:drawable/list_selector_background"
+                   android:layout_toLeftOf="@+id/setting_item_stat"
+                   android:visibility="gone">
+            
+        <ImageView android:layout_width="20dp"
+                   android:layout_height="20dp"
+                   android:tag="item_image"/>
+                      
+    </LinearLayout>
+        
+    <LinearLayout  android:id="@+id/setting_item_stat"
+                   android:layout_width="wrap_content"
+                   android:layout_height="fill_parent"
+                   android:padding="10dp"
+                   android:clickable="true"
+                   android:background="@android:drawable/list_selector_background"
+                   android:layout_toLeftOf="@+id/setting_item_music"
+                   android:visibility="gone">
+            
+        <ImageView android:layout_width="20dp" 
+                   android:layout_height="20dp"
+                   android:background="@drawable/ic_setting_stat"/>
+                      
+    </LinearLayout>
+        
+    <LinearLayout android:id="@+id/setting_item_music"
+                  android:layout_width="wrap_content"
+                  android:layout_height="fill_parent"
+                  android:padding="10dp"
+                  android:clickable="true"
+                  android:background="@android:drawable/list_selector_background"
+                  android:layout_toLeftOf="@+id/setting_item_margin"
+                  android:visibility="gone">
+            
+        <ImageView
+            android:layout_width="20dp" 
+            android:layout_height="20dp"
+            android:background="@drawable/ic_setting_music"/>
+                      
+    </LinearLayout>
+    
+    <View android:id="@+id/setting_item_margin"
+          android:layout_width="5dp"
+          android:layout_height="fill_parent"
+          android:layout_alignParentRight="true"/>
+        
+</RelativeLayout>
