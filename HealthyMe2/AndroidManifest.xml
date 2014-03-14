@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+          package="han.com"
+          android:versionCode="1"
+          android:versionName="1.0">
+    
+    <uses-sdk android:minSdkVersion="17" android:targetSdkVersion="17"/>
+    
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.READ_CONTACTS" />
+    <uses-permission android:name="android.permission.MANAGE_ACCOUNTS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <permission android:name="han.com.permission.C2D_MESSAGE" android:protectionLevel="signature" />
+    <uses-permission android:name="han.com.permission.C2D_MESSAGE" />    
+    <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+    <uses-permission android:name="android.permission.GET_ACCOUNTS" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    
+    <supports-screens android:resizeable="true"
+                      android:smallScreens="true"
+                      android:normalScreens="true"
+                      android:largeScreens="true"
+                      android:anyDensity="true"/> 
+    
+    <application android:label="Healthy Me"
+                 android:icon="@drawable/ic_launcher"
+                 android:allowBackup="true">
+        
+        <activity android:name=".activity.main.activity.MainActivity"
+                  android:label="Healthy Me"
+                  android:theme="@style/Theme.healthyme_actionbar"
+                  android:configChanges="orientation|screenSize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+            
+        <receiver android:name="com.google.android.gcm.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+            <intent-filter>
+                <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+            </intent-filter>
+        </receiver>
+        
+        
+        <activity android:name=".activity.track.settingmenu.ActivityTrackSettingMenu"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.goals.ActivityGoalSettingTime"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>        
+        <activity android:name=".activity.track.goals.ActivityGoalSettingDistance"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.goals.ActivityGoalSettingStep"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.goals.ActivityGoalSettingCalories"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.goals.ActivitySavedGoals"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.history.ActivityOverallHistory"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.goals.ActivityAddGoal"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.track.reminder.ActivityReminderSetting"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.reward.adding.ActivityEnterRewardName"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.reward.welcome.ActivityRewardWelcome"
+                  android:theme="@android:style/Theme.Translucent"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        <activity android:name=".activity.reward.settingmenu.ActivityRewardSettingMenu"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        
+        <activity android:name=".activity.reward.remind.DialogReportReward"
+                  android:theme="@android:style/Theme.Holo.Dialog"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        
+        <activity android:name=".activity.main.activity.WelcomeActivity"
+                  android:theme="@android:style/Theme.Holo.Dialog"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        
+        <activity android:name=".activity.music.ActivityMusic"
+                  android:theme="@android:style/Theme.Holo"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        
+        <activity android:name=".pedometer.Pedometer"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        
+        <activity android:name=".pedometer.Settings"
+                  android:configChanges="orientation|screenSize">
+        </activity>
+        
+        <service android:name=".pedometer.StepService"/>   
+        
+        <service android:name=".GCMIntentService" />   
+    </application> 
+          
+</manifest>
