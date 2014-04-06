@@ -97,8 +97,8 @@ public class FragmentTrack extends Fragment implements InterfaceReportGpsDistanc
                 super.handleMessage(msg);
                 Object[] data = (Object[]) msg.obj;
                 viewTrackProgressBar.updateProgress((Float) data[0]);
-                trackProgressValue.setText((String) data[1]);
-                trackProgressUnit.setText((String) data[2]);
+                trackProgressValue.setText((CharSequence) data[1]);
+                trackProgressUnit.setText((CharSequence) data[2]);
             }
         };
 
@@ -214,11 +214,11 @@ public class FragmentTrack extends Fragment implements InterfaceReportGpsDistanc
                             .setMessage("Are you sure you want to stop current tracking?")
                             .setNegativeButton("No", null)
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface arg0, int arg1) {
-                            stopTrack();
-                            Toast.makeText(getActivity(), "goal is cancelled", Toast.LENGTH_SHORT).show();
-                        }
-                    }).create().show();
+                                public void onClick(DialogInterface arg0, int arg1) {
+                                    stopTrack();
+                                    Toast.makeText(getActivity(), "goal is cancelled", Toast.LENGTH_SHORT).show();
+                                }
+                            }).create().show();
 
                     return;
                 }
@@ -228,7 +228,6 @@ public class FragmentTrack extends Fragment implements InterfaceReportGpsDistanc
                 }
             }
         });
-
 
         buttonAddGoal = (ImageButton) myFragmentView.findViewById(R.id.frag_track_goal_button);
         buttonAddGoal.setOnClickListener(new OnClickListener() {
@@ -243,7 +242,6 @@ public class FragmentTrack extends Fragment implements InterfaceReportGpsDistanc
                 startActivity(i);
             }
         });
-
 
         musicName = (TextView) myFragmentView.findViewById(R.id.frag_track_music_name);
 
