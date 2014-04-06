@@ -1,6 +1,6 @@
 package han.com.fragment.goal;
 
-import han.com.activity.main.fragment.*;
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -10,18 +10,18 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
-import android.support.v4.app.Fragment;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup;
+import android.view.Window;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 import han.com.R;
+import han.com.activity.main.fragment.FragmentReward;
+import han.com.activity.main.fragment.ViewTrackProgress;
 import han.com.activity.music.ActivityMusic;
 import han.com.activity.reward.remind.DialogReportReward;
 import han.com.activity.track.goals.ActivityAddGoal;
@@ -53,7 +53,7 @@ import java.util.TimerTask;
  *
  * @author han
  */
-public class ActivityTrack extends Fragment implements InterfaceReportGpsDistance, InterfaceReportStep, InterfaceTrackingReadyReport {
+public class ActivityTrack extends Activity implements InterfaceReportGpsDistance, InterfaceReportStep, InterfaceTrackingReadyReport {
 
     private static final String className = ActivityTrack.class.getName();
     private static Handler updateMusicInfo;
@@ -72,10 +72,11 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
+        requestWindowFeature(Window.FEATURE_NO_TITLE);
         super.onCreate(savedInstanceState);
         Log.d(className, "onCreate");
 
-        locationTracker = new OutsideLocationTracker(getActivity());
+        locationTracker = new OutsideLocationTracker(this);
         locationTracker.setReportInitiation(this);
 
         gpsLocationListener = new ListenerGpsLocation(this);
@@ -98,8 +99,8 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
                 super.handleMessage(msg);
                 Object[] data = (Object[]) msg.obj;
                 viewTrackProgressBar.updateProgress((Float) data[0]);
-                trackProgressValue.setText((String) data[1]);
-                trackProgressUnit.setText((String) data[2]);
+                trackProgressValue.setText((CharSequence) data[1]);
+                trackProgressUnit.setText((CharSequence) data[2]);
             }
         };
 
@@ -112,18 +113,15 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
                 }
             }
         };
+
+        createView();
     }
 
-    @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        Log.d(className, "onCreateView");
-
-        final View myFragmentView = inflater.inflate(R.layout.fragment_track, container, false);
-        MyWidgets.makeFragmentTitle(myFragmentView, "Track");
+    public void createView() {
+        setContentView(R.layout.fragment_track);
 
         //test
-        TextView title = (TextView) myFragmentView.findViewById(R.id.title_fragment_text);
+        TextView title = (TextView) findViewById(R.id.title_fragment_text);
         title.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
                 //Intent i = new Intent(getActivity(), Pedometer.class);
@@ -132,22 +130,22 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
         });
         //test end
 
-        LinearLayout settingAll = (LinearLayout) myFragmentView.findViewById(R.id.fragment_setting_item_1);
+        LinearLayout settingAll = (LinearLayout) findViewById(R.id.fragment_setting_item_1);
         ImageView itemImage = (ImageView) settingAll.findViewWithTag("item_image");
         itemImage.setImageResource(R.drawable.ic_setting_all);
         settingAll.setVisibility(View.VISIBLE);
         settingAll.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
-                Intent i = new Intent(getActivity(), ActivityTrackSettingMenu.class);
+                Intent i = new Intent(ActivityTrack.this, ActivityTrackSettingMenu.class);
                 startActivity(i);
             }
         });
 
-        LinearLayout settingMusic = (LinearLayout) myFragmentView.findViewById(R.id.setting_item_music);
+        LinearLayout settingMusic = (LinearLayout) findViewById(R.id.setting_item_music);
         settingMusic.setVisibility(View.VISIBLE);
         settingMusic.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
-                Intent i = new Intent(getActivity(), ActivityMusic.class);
+                Intent i = new Intent(ActivityTrack.this, ActivityMusic.class);
                 startActivity(i);
             }
         });
@@ -159,34 +157,34 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
             scaleVlaue = Values.DisplayDensity / 2f;
         }
 
-        viewTrackProgressBar = new ViewTrackProgress(getActivity(), 500, 250, scale, scaleVlaue);
+        viewTrackProgressBar = new ViewTrackProgress(ActivityTrack.this, 500, 250, scale, scaleVlaue);
 
-        LinearLayout layout = (LinearLayout) myFragmentView.findViewById(R.id.frag_track_track_progress_container);
+        LinearLayout layout = (LinearLayout) findViewById(R.id.frag_track_track_progress_container);
         layout.addView(viewTrackProgressBar);
 
-        trackName = (TextView) myFragmentView.findViewById(R.id.frag_track_track_name);
+        trackName = (TextView) findViewById(R.id.frag_track_track_name);
 
-        goalValue = (TextView) myFragmentView.findViewById(R.id.frag_track_goal_value);
-        goalUnit = (TextView) myFragmentView.findViewById(R.id.frag_track_goal_unit);
+        goalValue = (TextView) findViewById(R.id.frag_track_goal_value);
+        goalUnit = (TextView) findViewById(R.id.frag_track_goal_unit);
 
-        subGoal1Value = (TextView) myFragmentView.findViewById(R.id.frag_track_sub_goal_1_value);
-        subGoal2Value = (TextView) myFragmentView.findViewById(R.id.frag_track_sub_goal_2_value);
-        subGoal3Value = (TextView) myFragmentView.findViewById(R.id.frag_track_sub_goal_3_value);
+        subGoal1Value = (TextView) findViewById(R.id.frag_track_sub_goal_1_value);
+        subGoal2Value = (TextView) findViewById(R.id.frag_track_sub_goal_2_value);
+        subGoal3Value = (TextView) findViewById(R.id.frag_track_sub_goal_3_value);
 
-        subGoal1Image = (ImageView) myFragmentView.findViewById(R.id.frag_track_sub_goal_1_image);
-        subGoal2Image = (ImageView) myFragmentView.findViewById(R.id.frag_track_sub_goal_2_image);
+        subGoal1Image = (ImageView) findViewById(R.id.frag_track_sub_goal_1_image);
+        subGoal2Image = (ImageView) findViewById(R.id.frag_track_sub_goal_2_image);
 
-        sportTypeImage = (ImageView) myFragmentView.findViewById(R.id.frag_track_sport_image);
+        sportTypeImage = (ImageView) findViewById(R.id.frag_track_sport_image);
 
-        trackProgressValue = (TextView) myFragmentView.findViewById(R.id.frag_track_track_progress_value);
-        trackProgressUnit = (TextView) myFragmentView.findViewById(R.id.frag_track_track_progress_unit);
+        trackProgressValue = (TextView) findViewById(R.id.frag_track_track_progress_value);
+        trackProgressUnit = (TextView) findViewById(R.id.frag_track_track_progress_unit);
 
-        buttonStart = (ImageButton) myFragmentView.findViewById(R.id.button_play_music);
+        buttonStart = (ImageButton) findViewById(R.id.button_play_music);
         buttonStart.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
                 if (CurrentGoal.getGoalData() == null) {
                     String s = "Please select your goal first or add a new goal!";
-                    Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityTrack.this, s, Toast.LENGTH_SHORT).show();
                     Speak.getInstance(null).speak(s);
                     return;
                 }
@@ -206,18 +204,18 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
             }
         });
 
-        buttonStop = (ImageButton) myFragmentView.findViewById(R.id.button_pause_music);
+        buttonStop = (ImageButton) findViewById(R.id.button_pause_music);
         buttonStop.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
                 if (CurrentGoal.getGoalRecord() != null) {
-                    new AlertDialog.Builder(getActivity())
+                    new AlertDialog.Builder(ActivityTrack.this)
                             .setTitle("Stop Current Goal?")
                             .setMessage("Are you sure you want to stop current tracking?")
                             .setNegativeButton("No", null)
                             .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface arg0, int arg1) {
                                     stopTrack();
-                                    Toast.makeText(getActivity(), "goal is cancelled", Toast.LENGTH_SHORT).show();
+                                    Toast.makeText(ActivityTrack.this, "goal is cancelled", Toast.LENGTH_SHORT).show();
                                 }
                             }).create().show();
 
@@ -230,23 +228,21 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
             }
         });
 
-        buttonAddGoal = (ImageButton) myFragmentView.findViewById(R.id.frag_track_goal_button);
+        buttonAddGoal = (ImageButton) findViewById(R.id.frag_track_goal_button);
         buttonAddGoal.setOnClickListener(new OnClickListener() {
             public void onClick(View arg0) {
                 if (CurrentGoal.getGoalRecord() != null) {
                     String s = "Please stop your current goal first";
-                    Toast.makeText(getActivity(), s, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(ActivityTrack.this, s, Toast.LENGTH_SHORT).show();
                     Speak.getInstance(null).speak(s);
                     return;
                 }
-                Intent i = new Intent(getActivity(), ActivityAddGoal.class);
+                Intent i = new Intent(ActivityTrack.this, ActivityAddGoal.class);
                 startActivity(i);
             }
         });
 
-        musicName = (TextView) myFragmentView.findViewById(R.id.frag_track_music_name);
-
-        return myFragmentView;
+        musicName = (TextView) findViewById(R.id.frag_track_music_name);
     }
 
     @Override
@@ -299,7 +295,7 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
                 CurrentGoal.setGoalData(coachGoal);
                 CurrentGoal.clearCurrentTrackingInfo();
                 Speak.getInstance(null).speak("you have a coach goal to finish");
-                Toast.makeText(getActivity(), "You have a Coach goal to finish", Toast.LENGTH_SHORT).show();
+                Toast.makeText(ActivityTrack.this, "You have a Coach goal to finish", Toast.LENGTH_SHORT).show();
 
                 if (!UserGoal.isFinishedOneCoachGoalToday(DatabaseHandler.getInstance(null).getReadableDatabase())) {
                     MyWidgets.showNotification(R.drawable.ic_notification_p0_small,
@@ -663,7 +659,7 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
                 String rewardContent = "Woohoo! you have obtained " + finishedCoachGoal
                         + " flowers, and now you can get " + reward.getRewardName();
 
-                Intent i = new Intent(getActivity(), DialogReportReward.class);
+                Intent i = new Intent(ActivityTrack.this, DialogReportReward.class);
                 i.putExtra("dialog_reward_name", reward.getRewardName());
                 i.putExtra("dialog_reward_content", rewardContent);
                 startActivity(i);
@@ -690,7 +686,7 @@ public class ActivityTrack extends Fragment implements InterfaceReportGpsDistanc
             Speak.getInstance(null).speak("tracking finished");
         } else {
             Uri notification = RingtoneManager.getDefaultUri(RingtoneManager.TYPE_NOTIFICATION);
-            Ringtone r = RingtoneManager.getRingtone(getActivity(), notification);
+            Ringtone r = RingtoneManager.getRingtone(ActivityTrack.this, notification);
             r.play();
         }
 

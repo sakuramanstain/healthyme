@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 import han.com.R;
+import han.com.datapool.CurrentGoal;
 import han.com.db.UserGoal;
 import han.com.tts.Speak;
 import java.util.List;
@@ -63,6 +64,15 @@ public class ListAdapterGoalListItem extends ArrayAdapter<Object[]> {
             img2.setOnClickListener(new View.OnClickListener() {
 
                 public void onClick(View arg0) {
+                    if (g.getValid() == 1) {
+                        CurrentGoal.setGoalData(g);
+                        CurrentGoal.setGoalRecord(null);
+                        CurrentGoal.clearCurrentTrackingInfo();
+                        Toast.makeText(context, "Goal is set", Toast.LENGTH_SHORT).show();
+                        Intent i = new Intent(context, ActivityTrack.class);
+                        context.startActivity(i);
+                        return;
+                    }
                     if (g.getValid() != 4) {
                         Toast.makeText(context, "You cannot mark this goal", Toast.LENGTH_SHORT).show();
                         return;
