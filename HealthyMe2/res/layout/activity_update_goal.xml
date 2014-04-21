@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    
+    <include layout="@layout/title_for_sub_activity"/>
+           
+    <TextView android:id="@+id/act_update_goal_text1"  
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="28sp"
+              android:text="Goal:"
+              android:labelFor="@+id/act_update_goal_edit1"/>
+    
+    <EditText android:id="@+id/act_update_goal_edit1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:inputType="textMultiLine"
+              android:maxLines="5"
+              android:hint="Enter your goal content here"/>
+    
+    <LinearLayout  android:orientation="horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+    
+        <TextView android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:textSize="28sp"
+                  android:text="Choose Icon:"/>
+    
+        <ImageView android:id="@+id/act_update_goal_image1"
+                   android:layout_width="48dp" 
+                   android:layout_height="48dp"
+                   android:src="@drawable/ic_goal_list_q2"
+                   android:contentDescription=""/>
+    
+    </LinearLayout>
+    
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="28sp"
+              android:text="Goal Type:"/>
+
+    <RadioGroup android:id="@+id/act_update_goal_radio_group1"  
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+        <RadioButton android:id="@+id/act_update_goal_radio1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Food"/>
+        <RadioButton android:id="@+id/act_update_goal_radio2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Fitness"/>
+        <RadioButton android:id="@+id/act_update_goal_radio3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Other"
+                     android:checked="true"/>
+    </RadioGroup>
+    
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="28sp"
+              android:text="Goal Frequency:"/>
+
+    <RadioGroup android:id="@+id/act_update_goal_radio_group2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+        <RadioButton android:id="@+id/act_update_goal_radio4"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Once"
+                     android:checked="true"/>
+        <RadioButton android:id="@+id/act_update_goal_radio5"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Daily"/>
+        <RadioButton android:id="@+id/act_update_goal_radio6"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Weekly"
+                     android:checked="true"/>
+        <RadioButton android:id="@+id/act_update_goal_radio7"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Monthly"/>
+    </RadioGroup>
+    
+    <LinearLayout  android:orientation="horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+        
+        <Button android:id="@+id/act_update_goal_button1" 
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:text="Save"
+                android:layout_weight="1"/>
+        
+        <Button android:id="@+id/act_update_goal_button2"  
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:text="Cancel"
+                android:layout_weight="1"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

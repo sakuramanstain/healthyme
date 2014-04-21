@@ -26,7 +26,8 @@
                           style="@style/MyBigFont"
                           android:textColor="@color/my_green"
                           android:layout_marginTop="5dp"
-                          android:textSize="16dp"/>
+                          android:textSize="16dp"
+                          android:visibility="invisible"/>
                 
                 <ImageButton android:id="@+id/frag_track_goal_button"
                              android:layout_width="24dp"
@@ -34,7 +35,8 @@
                              android:background="@drawable/btn_add_goal_button"
                              android:layout_marginLeft="10dp"
                              android:layout_marginTop="5dp"
-                             android:layout_toRightOf="@+id/frag_track_goal_title_area"/>
+                             android:layout_toRightOf="@+id/frag_track_goal_title_area"
+                             android:visibility="invisible"/>
         
                 <LinearLayout android:layout_width="wrap_content"
                               android:layout_height="wrap_content"

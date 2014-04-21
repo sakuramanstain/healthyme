@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    
+    <TextView  android:id="@+id/dialog_goal_frequency_item_text1"
+               android:layout_width="match_parent" 
+               android:layout_height="wrap_content"
+               android:layout_marginTop="10dp"
+               android:layout_marginBottom="10dp"
+               android:layout_marginLeft="15dp"
+               android:contentDescription=""
+               android:textSize="20sp" />
+        
+</LinearLayout>
+    
+

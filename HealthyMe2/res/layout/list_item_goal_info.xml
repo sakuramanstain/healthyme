@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:paddingTop="7dp"
+              android:paddingBottom="7dp">
+    
+    <ImageView android:id="@+id/list_item_goal_info_img1"
+               android:layout_width="0dp" 
+               android:layout_height="50dp"
+               android:contentDescription=""
+               android:layout_weight="1"/>
+    
+    <han.com.ui.common.MyCalibriTextView android:id="@+id/list_item_goal_info_text1"
+                                         android:layout_width="0dp"
+                                         android:layout_height="match_parent"
+                                         android:textSize="28sp"
+                                         android:layout_weight="5"
+                                         android:ellipsize="end"
+                                         android:singleLine="true"
+                                         android:paddingTop="8dp"
+                                         android:paddingLeft="5dp"
+                                         android:paddingRight="5dp"/>
+    
+    <ImageView android:id="@+id/list_item_goal_info_img2"
+               android:layout_width="0dp" 
+               android:layout_height="50dp"
+               android:contentDescription=""
+               android:layout_weight="1"/>
+    
+</LinearLayout>
