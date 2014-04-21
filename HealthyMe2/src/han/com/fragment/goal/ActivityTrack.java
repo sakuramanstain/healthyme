@@ -24,7 +24,6 @@ import han.com.activity.main.fragment.FragmentReward;
 import han.com.activity.main.fragment.ViewTrackProgress;
 import han.com.activity.music.ActivityMusic;
 import han.com.activity.reward.remind.DialogReportReward;
-import han.com.activity.track.goals.ActivityAddGoal;
 import han.com.activity.track.goals.ActivitySavedGoals;
 import han.com.activity.track.reminder.ProgressReminder;
 import han.com.activity.track.settingmenu.ActivityTrackSettingMenu;
@@ -63,7 +62,7 @@ public class ActivityTrack extends Activity implements InterfaceReportGpsDistanc
     }
     private TextView trackName, goalValue, goalUnit, subGoal3Value, subGoal1Value, subGoal2Value, trackProgressValue, trackProgressUnit, musicName;
     private ImageView subGoal1Image, subGoal2Image, sportTypeImage;
-    private ImageButton buttonStart, buttonStop, buttonAddGoal;
+    private ImageButton buttonStart, buttonStop;
     private ViewTrackProgress viewTrackProgressBar;
     private OutsideLocationTracker locationTracker;
     private ListenerGpsLocation gpsLocationListener;
@@ -119,6 +118,7 @@ public class ActivityTrack extends Activity implements InterfaceReportGpsDistanc
 
     public void createView() {
         setContentView(R.layout.fragment_track);
+        ((TextView) findViewById(R.id.title_fragment_text)).setText("Track");
 
         //test
         TextView title = (TextView) findViewById(R.id.title_fragment_text);
@@ -225,20 +225,6 @@ public class ActivityTrack extends Activity implements InterfaceReportGpsDistanc
                 if (CurrentGoal.isTrackIsStarted()) {
                     stopTrack();
                 }
-            }
-        });
-
-        buttonAddGoal = (ImageButton) findViewById(R.id.frag_track_goal_button);
-        buttonAddGoal.setOnClickListener(new OnClickListener() {
-            public void onClick(View arg0) {
-                if (CurrentGoal.getGoalRecord() != null) {
-                    String s = "Please stop your current goal first";
-                    Toast.makeText(ActivityTrack.this, s, Toast.LENGTH_SHORT).show();
-                    Speak.getInstance(null).speak(s);
-                    return;
-                }
-                Intent i = new Intent(ActivityTrack.this, ActivityAddGoal.class);
-                startActivity(i);
             }
         });
 
@@ -802,6 +788,17 @@ public class ActivityTrack extends Activity implements InterfaceReportGpsDistanc
                 || currentGoalType.equals(UserGoal.GOAL_TYPE_STEP)
                 || currentGoalType.equals(UserGoal.GOAL_TYPE_CALORIES)) {
             subGoal3Value.setText(CurrentGoal.getCurrentTotalTimeString());
+        }
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        boolean backToList = getIntent().hasExtra("backToList");
+        if (backToList) {
+            if (ActivityUpdateGoal.instance != null) {
+                ActivityUpdateGoal.instance.finish();
+            }
         }
     }
 }

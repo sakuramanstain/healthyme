@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import han.com.datapool.PreferenceItem;
+import han.com.fragment.goal.FragmentGoalList;
 
 /**
  *
@@ -60,6 +61,7 @@ public class GoalRecord implements PreferenceItem {
         db.update(TABLE_NAME, values, COL_RECORD_ID + "=?", new String[]{String.valueOf(recordId)});
         db.close();
         Log.d(className, "goal record " + recordId + " is ended " + completeType);
+        FragmentGoalList.getReloadListHandler().sendEmptyMessage(0);
     }
 
     public static int getTotalNumberGoalsInCompleteType(SQLiteDatabase db, int completeType) {

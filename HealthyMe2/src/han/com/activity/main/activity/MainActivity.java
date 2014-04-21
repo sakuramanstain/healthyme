@@ -1,6 +1,8 @@
 package han.com.activity.main.activity;
 
-import android.app.*;
+import android.app.ActionBar;
+import android.app.AlertDialog;
+import android.app.FragmentTransaction;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.content.Intent;
@@ -9,7 +11,8 @@ import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.util.DisplayMetrics;
 import android.util.Log;
-import android.view.*;
+import android.view.Display;
+import android.view.WindowManager;
 import android.widget.Toast;
 import com.google.android.gcm.GCMRegistrar;
 import han.com.GCMIntentService;
@@ -64,7 +67,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
         viewPager = (ViewPager) findViewById(R.id.pager);
-        viewPager.setOffscreenPageLimit(2);
+        viewPager.setOffscreenPageLimit(4);
         viewPager.setAdapter(myFragmentPagerAdapter);
         viewPager.setOnPageChangeListener(new ViewPager.SimpleOnPageChangeListener() {
             @Override
@@ -73,20 +76,25 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             }
         });
 
-        ActionBar.Tab tabTrack = actionBar.newTab();
-        tabTrack.setIcon(R.drawable.ic_action_track);
-        tabTrack.setTabListener(this);
-        actionBar.addTab(tabTrack);
+        ActionBar.Tab tabGoal = actionBar.newTab();
+        tabGoal.setIcon(R.drawable.ic_action_check);
+        tabGoal.setTabListener(this);
+        actionBar.addTab(tabGoal);
 
         ActionBar.Tab tabReward = actionBar.newTab();
         tabReward.setIcon(R.drawable.ic_action_reward3);
         tabReward.setTabListener(this);
         actionBar.addTab(tabReward);
 
-//        ActionBar.Tab tabFriends = actionBar.newTab();
-//        tabFriends.setIcon(R.drawable.ic_action_friends);
-//        tabFriends.setTabListener(this);
-//        actionBar.addTab(tabFriends);
+        ActionBar.Tab camera = actionBar.newTab();
+        camera.setIcon(R.drawable.ic_action_camera);
+        camera.setTabListener(this);
+        actionBar.addTab(camera);
+
+        ActionBar.Tab tabFriends = actionBar.newTab();
+        tabFriends.setIcon(R.drawable.ic_action_friends);
+        tabFriends.setTabListener(this);
+        actionBar.addTab(tabFriends);
 
         getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
 
@@ -97,7 +105,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 //            previousRotation = rotation;
 //            getActionBar().hide();
 //        }
-
         //init preferences and services
         initServices();
 
@@ -110,7 +117,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         registerGoogleCloudMessaging();
 
         //ViewServer.get(this).addWindow(this);
-
         Pedometer.mIsRunning = true;
         startService(new Intent(this, StepService.class));
     }
@@ -187,10 +193,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
                 .setMessage("Are you sure you want to exit? This will stop ongoing goal.")
                 .setNegativeButton("No", null)
                 .setPositiveButton("Yes", new OnClickListener() {
-            public void onClick(DialogInterface arg0, int arg1) {
-                MainActivity.super.onBackPressed();
-            }
-        }).create().show();
+                    public void onClick(DialogInterface arg0, int arg1) {
+                        MainActivity.super.onBackPressed();
+                    }
+                }).create().show();
     }
 
     private void registerGoogleCloudMessaging() {

@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.Window;
+import android.widget.AdapterView;
 import android.widget.ImageView;
 import android.widget.NumberPicker;
 import android.widget.TextView;
@@ -20,7 +21,7 @@ import han.com.utils.Values;
  *
  * @author han
  */
-public class ActivityGoalSettingStep extends Activity {
+public class ActivityGoalSettingStep extends Activity implements AdapterView.OnItemClickListener {
 
     private static final String className = ActivityGoalSettingDistance.class.getName();
     public static final int DIGIT_TYPE_1 = 1;
@@ -33,6 +34,7 @@ public class ActivityGoalSettingStep extends Activity {
     private int digit3value = 0;
     private int digit4value = 0;
     private GoalHelper goalHelper;
+    private DialogGoalFrequency dialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -126,13 +128,19 @@ public class ActivityGoalSettingStep extends Activity {
             return;
         }
 
+        dialog = new DialogGoalFrequency(this, "And this goal is for");
+        dialog.setDialogOnItemClickListener(this);
+        dialog.show();
+    }
+
+    private void doSaveGoal(String freq) {
         int stepValue = Values.getStepValue(digit1value, digit2value, digit3value, digit4value);
         if (stepValue == 0) {
             Toast.makeText(this, Messages.ERROR_NO_GOAL_VALUE, Toast.LENGTH_SHORT).show();
             return;
         }
 
-        UserGoal newGoal = CurrentGoal.makeGoal(stepValue, UserGoal.GOAL_IS_VALID, goalHelper.getGoalName(), goalHelper.getGoalOrder(), "steps", 0, UserGoal.GOAL_TYPE_STEP);
+        UserGoal newGoal = CurrentGoal.makeGoal(stepValue, UserGoal.GOAL_IS_VALID, goalHelper.getGoalName(), goalHelper.getGoalOrder(), "steps", 0, UserGoal.GOAL_TYPE_STEP, freq);
         goalHelper.setGoalData(newGoal);
     }
 
@@ -148,11 +156,20 @@ public class ActivityGoalSettingStep extends Activity {
                 return;
             }
 
-            UserGoal newGoal = CurrentGoal.makeGoal(stepValue, UserGoal.GOAL_IS_NOT_VALID, goalHelper.getGoalName(), goalHelper.getGoalOrder(), "steps", 0, UserGoal.GOAL_TYPE_STEP);
+            UserGoal newGoal = CurrentGoal.makeGoal(stepValue, UserGoal.GOAL_IS_NOT_VALID, goalHelper.getGoalName(), goalHelper.getGoalOrder(), "steps", 0, UserGoal.GOAL_TYPE_STEP, null);
             goalHelper.setGoalData(newGoal);
         }
         goalHelper.useCurrentGoalData();
         goalHelper.finishPreviousActivity();
         finish();
+    }
+
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        String freq = (String) DialogGoalFrequency.GoalFrequencies[position][1];
+        doSaveGoal(freq);
+        if (dialog != null) {
+            dialog.dismiss();
+            dialog = null;
+        }
     }
 }

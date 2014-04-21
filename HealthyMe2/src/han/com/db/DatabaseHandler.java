@@ -39,7 +39,9 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + UserGoal.COL_GOAL_UNIT + " TEXT,"
                 + UserGoal.COL_GOAL_TYPE + " TEXT,"
                 + UserGoal.COL_VALID + " INTEGER,"
-                + UserGoal.COL_GOAL_RECEIVE_TIME + " INTEGER"
+                + UserGoal.COL_GOAL_RECEIVE_TIME + " INTEGER,"
+                + UserGoal.COL_ICON + " INTEGER,"
+                + UserGoal.COL_FREQUENCY + " TEXT"
                 + ")";
         db.execSQL(sql);
         Log.d(className, sql);

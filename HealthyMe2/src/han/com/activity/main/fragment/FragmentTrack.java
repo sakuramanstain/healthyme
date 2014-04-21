@@ -52,6 +52,7 @@ import java.util.TimerTask;
  *
  * @author han
  */
+@Deprecated
 public class FragmentTrack extends Fragment implements InterfaceReportGpsDistance, InterfaceReportStep, InterfaceTrackingReadyReport {
 
     private static final String className = FragmentTrack.class.getName();

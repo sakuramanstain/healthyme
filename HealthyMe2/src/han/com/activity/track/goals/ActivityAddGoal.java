@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.Window;
 import android.widget.ListView;
 import han.com.R;
+import han.com.fragment.goal.ActivityTrack;
+import han.com.fragment.goal.FragmentGoalList;
 import han.com.ui.common.ListAdapterTrackSettingItem;
 import han.com.utils.MyWidgets;
 import han.com.utils.Values;
@@ -27,7 +29,7 @@ public class ActivityAddGoal extends ListActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.list_setting_activity);
 
-        MyWidgets.makeSubActivityTitle(this, "Add Goal", R.drawable.ic_title_goal);
+        MyWidgets.makeSubActivityTitle(this, "Make a Fitness Tracking Goal", R.drawable.ic_title_goal);
 
         ArrayList<Object[]> items = new ArrayList<Object[]>(8);
 
@@ -89,7 +91,11 @@ public class ActivityAddGoal extends ListActivity {
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         Log.d(className, "onActivityResult: " + requestCode + " " + resultCode);
         if (requestCode == Values.REQUEST_CODE && resultCode == Values.RESULT_CODE_FINISH) {
-            finish();
+            Intent i = new Intent(this, ActivityTrack.class);
+            i.putExtra("backToList", true);
+            startActivity(i);
         }
+        FragmentGoalList.getReloadListHandler().sendEmptyMessage(0);
+        finish();
     }
 }

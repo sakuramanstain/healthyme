@@ -6,14 +6,13 @@ import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 import han.com.datapool.PreferenceItem;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.GregorianCalendar;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
-/**
- *
- * @author han
- */
 public class UserGoal implements PreferenceItem {
 
     private static final String className = UserGoal.class.getName();
@@ -27,15 +26,108 @@ public class UserGoal implements PreferenceItem {
     public static final String COL_GOAL_TYPE = "goal_type";
     public static final String COL_VALID = "valid";
     public static final String COL_GOAL_RECEIVE_TIME = "goal_receive_time";
+    public static final String COL_ICON = "icon";
+    public static final String COL_FREQUENCY = "freq";
     public static final String GOAL_TYPE_DISTANCE = "user.goal.type.distance";
     public static final String GOAL_TYPE_STEP = "user.goal.type.step";
     public static final String GOAL_TYPE_CALORIES = "user.goal.type.cal";
     public static final String GOAL_TYPE_TIME = "user.goal.type.time";
+    public static final String GOAL_TYPE_FOOD = "user.goal.type.food";
+    public static final String GOAL_TYPE_OTHER = "user.goal.type.other";
     public static final int GOAL_IS_VALID = 1;
     public static final int GOAL_IS_NOT_VALID = 0;
     public static final int GOAL_IS_COACH_NEW = 2;
     public static final int GOAL_IS_COACH_FINISHED = 3;
+    public static final int GOAL_IS_NON_TRACKING = 4;
+    public static final String GOAL_FREQUENCY_ONCE = "once";
+    public static final String GOAL_FREQUENCY_DAY = "day";
+    public static final String GOAL_FREQUENCY_WEEK = "week";
+    public static final String GOAL_FREQUENCY_MONTH = "month";
     public static final String GOAL_NAME_COACH = "Coach";
+
+    public static List<UserGoal> getAllGoals(SQLiteDatabase db) {
+        List<UserGoal> userGoalList = new LinkedList<UserGoal>();
+
+        String sql = "select * from " + TABLE_NAME + " where " + COL_VALID + "!=" + GOAL_IS_NOT_VALID
+                + " and " + COL_VALID + "!=" + GOAL_IS_COACH_FINISHED
+                + " order by " + COL_GOAL_ID + " desc";
+
+        String sql2 = "select user_goals.goal_id, user_goals.freq, goal_record.start_date from user_goals, goal_record where user_goals.goal_id=goal_record.goal_id and goal_record.complete=1";
+        Cursor cursor2 = db.rawQuery(sql2, null);
+        Set<Integer> completedGoals = new HashSet<Integer>(0);
+        Set<Integer> hiddenGoals = new HashSet<Integer>(0);
+
+        Calendar c = new GregorianCalendar();
+        int nowMonth = c.get(Calendar.MONTH);
+        int nowWeek = c.get(Calendar.WEEK_OF_YEAR);
+        int nowDay = c.get(Calendar.DAY_OF_YEAR);
+
+        if (cursor2.moveToFirst()) {
+            do {
+                int goalId = cursor2.getInt(0);
+                String text = cursor2.getString(1);
+                long timeStart = cursor2.getLong(2);
+                if (text == null) {
+                    hiddenGoals.add(goalId);
+                    continue;
+                }
+
+                c.clear();
+                c.setTime(new Date(timeStart));
+
+                if (text.equals(UserGoal.GOAL_FREQUENCY_ONCE)) {
+                    completedGoals.add(goalId);
+                } else if (text.equals(UserGoal.GOAL_FREQUENCY_DAY)) {
+                    int goalDay = c.get(Calendar.DAY_OF_YEAR);
+                    if (nowDay == goalDay) {
+                        completedGoals.add(goalId);
+                    }
+                } else if (text.equals(UserGoal.GOAL_FREQUENCY_WEEK)) {
+                    int goalWeek = c.get(Calendar.WEEK_OF_YEAR);
+                    if (nowWeek == goalWeek) {
+                        completedGoals.add(goalId);
+                    }
+                } else if (text.equals(UserGoal.GOAL_FREQUENCY_MONTH)) {
+                    int goalMonth = c.get(Calendar.MONTH);
+                    if (nowMonth == goalMonth) {
+                        completedGoals.add(goalId);
+                    }
+                }
+
+            } while (cursor2.moveToNext());
+        }
+        Cursor cursor = db.rawQuery(sql, null);
+
+        if (cursor.moveToFirst()) {
+            do {
+                if (hiddenGoals.contains(cursor.getInt(0))) {
+                    continue;
+                }
+                UserGoal ug = new UserGoal();
+                ug.setGoalId(cursor.getInt(0));
+                ug.setGoalName(cursor.getString(1));
+                ug.setGoalOrder(cursor.getInt(2));
+                ug.setGoalIntense(cursor.getInt(3));
+                ug.setGoalValue(cursor.getFloat(4));
+                ug.setGoalUnit(cursor.getString(5));
+                ug.setGoalType(cursor.getString(6));
+                ug.setValid(cursor.getInt(7));
+                ug.setGoalReceiveTime(cursor.getLong(8));
+                ug.setIcon(cursor.getInt(9));
+                ug.setFrequency(cursor.getString(10));
+                if (completedGoals.contains(cursor.getInt(0))) {
+                    ug.setFinishedNow(true);
+                }
+
+                userGoalList.add(ug);
+            } while (cursor.moveToNext());
+        }
+
+        cursor.close();
+        db.close();
+
+        return userGoalList;
+    }
 
     public static List<UserGoal> getAllCoachGoals(SQLiteDatabase db, long after, long before) {
         List<UserGoal> userGoalList = new LinkedList<UserGoal>();
@@ -201,6 +293,8 @@ public class UserGoal implements PreferenceItem {
         values.put(COL_GOAL_TYPE, ug.getGoalType());
         values.put(COL_VALID, ug.getValid());
         values.put(COL_GOAL_RECEIVE_TIME, ug.getGoalReceiveTime());
+        values.put(COL_ICON, ug.getIcon());
+        values.put(COL_FREQUENCY, ug.getFrequency());
 
         long r = db.insert(TABLE_NAME, null, values);
         db.close();
@@ -288,6 +382,9 @@ public class UserGoal implements PreferenceItem {
     private String goalType;
     private int valid;
     private long goalReceiveTime;
+    private int icon;
+    private String frequency;
+    private boolean finishedNow;
 
     public UserGoal() {
     }
@@ -362,5 +459,29 @@ public class UserGoal implements PreferenceItem {
 
     public void setGoalReceiveTime(long goalReceiveTime) {
         this.goalReceiveTime = goalReceiveTime;
+    }
+
+    public int getIcon() {
+        return icon;
+    }
+
+    public void setIcon(int icon) {
+        this.icon = icon;
+    }
+
+    public String getFrequency() {
+        return frequency;
+    }
+
+    public void setFrequency(String frequency) {
+        this.frequency = frequency;
+    }
+
+    public boolean isFinishedNow() {
+        return finishedNow;
+    }
+
+    public void setFinishedNow(boolean finishedNow) {
+        this.finishedNow = finishedNow;
     }
 }
