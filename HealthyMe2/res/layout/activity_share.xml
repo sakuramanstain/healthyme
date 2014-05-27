@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="vertical"
+              android:layout_width="match_parent"
+              android:layout_height="match_parent">
+    
+    <include layout="@layout/title_for_sub_activity"/>
+    
+    <TextView android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="28sp"
+              android:text="Share With:"/>
+
+    <RadioGroup android:id="@+id/act_share_radio_group1"  
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+        <RadioButton android:id="@+id/act_share_radio1"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Coach"/>
+        <RadioButton android:id="@+id/act_share_radio2"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Buddy"/>
+        <RadioButton android:id="@+id/act_share_radio3"
+                     android:layout_width="wrap_content"
+                     android:layout_height="wrap_content"
+                     android:text="Everyone"
+                     android:checked="true"/>
+    </RadioGroup>
+
+    <CheckBox android:id="@+id/act_share_checkbox1"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:text="Include photos?"/>
+    
+    <ScrollView android:id="@+id/act_share_scroll1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+        
+        <LinearLayout android:id="@+id/act_share_layout1"  
+                      android:orientation="horizontal"
+                      android:layout_width="match_parent"
+                      android:layout_height="wrap_content">
+        </LinearLayout>
+        
+    </ScrollView>
+    
+    <TextView android:id="@+id/act_share_text1"  
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:textSize="28sp"
+              android:text="Add text:"
+              android:labelFor="@+id/act_share_edit1"/>
+    
+    <EditText android:id="@+id/act_share_edit1"
+              android:layout_width="match_parent"
+              android:layout_height="wrap_content"
+              android:inputType="textMultiLine"
+              android:maxLines="5"
+              android:hint="Enter your interesting things here"/>
+    
+    <LinearLayout  android:orientation="horizontal"
+                   android:layout_width="match_parent"
+                   android:layout_height="wrap_content">
+        
+        <Button android:id="@+id/act_share_button1"  
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:textSize="28sp"
+                android:text="Share"
+                android:layout_weight="1"/>
+        
+    </LinearLayout>
+
+</LinearLayout>

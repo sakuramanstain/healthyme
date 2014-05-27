@@ -4,10 +4,10 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.util.Log;
-import han.com.activity.main.fragment.FragmentHome;
 import han.com.activity.main.fragment.FragmentReward;
 import han.com.fragment.camera.FragmentCamera;
 import han.com.fragment.goal.FragmentGoalList;
+import han.com.fragment.share.FragmentShare;
 
 /**
  *
@@ -17,7 +17,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
 
     private static final String className = MyFragmentPagerAdapter.class.getName();
     private final FragmentCamera fragmentCamera;
-    private final FragmentHome fragmentFriend;
+    private final FragmentShare fragmentShare;
     private final FragmentReward fragmentReward;
     private final FragmentGoalList fragmentGoal;
 
@@ -26,7 +26,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         fragmentReward = new FragmentReward();
         fragmentGoal = new FragmentGoalList();
         fragmentCamera = new FragmentCamera();
-        fragmentFriend = new FragmentHome();
+        fragmentShare = new FragmentShare();
     }
 
     @Override
@@ -40,7 +40,7 @@ public class MyFragmentPagerAdapter extends FragmentPagerAdapter {
         } else if (i == 2) {
             return fragmentCamera;
         } else if (i == 3) {
-            return fragmentFriend;
+            return fragmentShare;
         }
 
         return null;

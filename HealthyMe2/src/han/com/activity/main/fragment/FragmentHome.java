@@ -38,6 +38,7 @@ import org.apache.http.HttpStatus;
  *
  * @author han
  */
+@Deprecated
 public class FragmentHome extends Fragment {
 
     private static final String className = FragmentHome.class.getName();

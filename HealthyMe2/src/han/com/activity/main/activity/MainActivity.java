@@ -15,6 +15,8 @@ import android.view.Display;
 import android.view.WindowManager;
 import android.widget.Toast;
 import com.google.android.gcm.GCMRegistrar;
+import com.nostra13.universalimageloader.core.ImageLoader;
+import com.nostra13.universalimageloader.core.ImageLoaderConfiguration;
 import han.com.GCMIntentService;
 import han.com.R;
 import han.com.activity.main.fragment.FragmentHome;
@@ -119,6 +121,11 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         //ViewServer.get(this).addWindow(this);
         Pedometer.mIsRunning = true;
         startService(new Intent(this, StepService.class));
+
+        // Create global configuration and initialize ImageLoader with this configuration
+        ImageLoaderConfiguration config = new ImageLoaderConfiguration.Builder(getApplicationContext())
+                .build();
+        ImageLoader.getInstance().init(config);
     }
 
     @Override

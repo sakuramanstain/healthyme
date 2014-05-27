@@ -12,6 +12,7 @@ import han.com.datapool.MyPedometerPreferences;
 import han.com.datapool.MyPedometerValuePack;
 import han.com.db.DatabaseHandler;
 import han.com.db.UserGoal;
+import han.com.fragment.goal.FragmentGoalList;
 import han.com.utils.MyWidgets;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
@@ -74,6 +75,7 @@ public class GCMIntentService extends GCMBaseIntentService {
                 if (FragmentReward.getLoadRewardsHandler() != null) {
                     FragmentReward.getLoadRewardsHandler().sendEmptyMessage(0);
                 }
+                FragmentGoalList.getReloadListHandler().sendEmptyMessage(0);
             }
 
             MyWidgets.showNotification(R.drawable.ic_notification_reward,

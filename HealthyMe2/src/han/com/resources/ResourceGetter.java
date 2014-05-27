@@ -3,10 +3,6 @@ package han.com.resources;
 import android.content.Context;
 import han.com.R;
 
-/**
- *
- * @author hanaldo
- */
 public class ResourceGetter {
 
     private static ResourceGetter instance;
@@ -17,11 +13,18 @@ public class ResourceGetter {
         }
         return instance;
     }
-    private String serviceAddressAllTags;
-    private String serviceAddressTagsSong;
-    private String serviceAddressSongFile;
-    private String serviceAddressRegisterDevice;
-    private String serviceAddressSyncRecord;
+    private final String serviceAddressAllTags;
+    private final String serviceAddressTagsSong;
+    private final String serviceAddressSongFile;
+    private final String serviceAddressRegisterDevice;
+    private final String serviceAddressSyncRecord;
+    private final String serviceAddressAddPost;
+    private final String serviceAddressPostImage;
+    private final String serviceAddressGetPosts;
+    private final String serviceAddressGetImages;
+    private final String serviceAddressBase;
+    private final String serviceAddressGetReply;
+    private final String serviceAddressAddReply;
 
     private ResourceGetter(Context context) {
         String serverIP = context.getResources().getString(R.string.server_ip);
@@ -30,6 +33,13 @@ public class ResourceGetter {
         serviceAddressSongFile = "http://" + serverIP + ":8080/HealthyMeGCM/getFile";
         serviceAddressRegisterDevice = "http://" + serverIP + ":8080/HealthyMeGCM/regDevice";
         serviceAddressSyncRecord = "http://" + serverIP + ":8080/HealthyMeGCM/syncUserRecord";
+        serviceAddressAddPost = "http://" + serverIP + ":8080/HealthyMeGCM/addPost";
+        serviceAddressPostImage = "http://" + serverIP + ":8080/HealthyMeGCM/uploadPostImage";
+        serviceAddressGetPosts = "http://" + serverIP + ":8080/HealthyMeGCM/getPosts";
+        serviceAddressGetImages = "http://" + serverIP + ":8080/HealthyMeGCM/getImages";
+        serviceAddressBase = "http://" + serverIP + ":8080/HealthyMeGCM/";
+        serviceAddressGetReply = "http://" + serverIP + ":8080/HealthyMeGCM/getReply";
+        serviceAddressAddReply = "http://" + serverIP + ":8080/HealthyMeGCM/replyPost";
     }
 
     public String getServiceAddressAllTags() {
@@ -50,5 +60,33 @@ public class ResourceGetter {
 
     public String getServiceAddressSyncRecord() {
         return serviceAddressSyncRecord;
+    }
+
+    public String getServiceAddressAddPost() {
+        return serviceAddressAddPost;
+    }
+
+    public String getServiceAddressPostImage() {
+        return serviceAddressPostImage;
+    }
+
+    public String getServiceAddressGetPosts() {
+        return serviceAddressGetPosts;
+    }
+
+    public String getServiceAddressGetImages() {
+        return serviceAddressGetImages;
+    }
+
+    public String getServiceAddressBase() {
+        return serviceAddressBase;
+    }
+
+    public String getServiceAddressGetReply() {
+        return serviceAddressGetReply;
+    }
+
+    public String getServiceAddressAddReply() {
+        return serviceAddressAddReply;
     }
 }

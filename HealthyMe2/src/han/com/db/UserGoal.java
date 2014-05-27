@@ -65,9 +65,9 @@ public class UserGoal implements PreferenceItem {
         if (cursor2.moveToFirst()) {
             do {
                 int goalId = cursor2.getInt(0);
-                String text = cursor2.getString(1);
+                String freq = cursor2.getString(1);
                 long timeStart = cursor2.getLong(2);
-                if (text == null) {
+                if (freq == null) {
                     hiddenGoals.add(goalId);
                     continue;
                 }
@@ -75,19 +75,19 @@ public class UserGoal implements PreferenceItem {
                 c.clear();
                 c.setTime(new Date(timeStart));
 
-                if (text.equals(UserGoal.GOAL_FREQUENCY_ONCE)) {
+                if (freq.equals(UserGoal.GOAL_FREQUENCY_ONCE)) {
                     completedGoals.add(goalId);
-                } else if (text.equals(UserGoal.GOAL_FREQUENCY_DAY)) {
+                } else if (freq.equals(UserGoal.GOAL_FREQUENCY_DAY)) {
                     int goalDay = c.get(Calendar.DAY_OF_YEAR);
                     if (nowDay == goalDay) {
                         completedGoals.add(goalId);
                     }
-                } else if (text.equals(UserGoal.GOAL_FREQUENCY_WEEK)) {
+                } else if (freq.equals(UserGoal.GOAL_FREQUENCY_WEEK)) {
                     int goalWeek = c.get(Calendar.WEEK_OF_YEAR);
                     if (nowWeek == goalWeek) {
                         completedGoals.add(goalId);
                     }
-                } else if (text.equals(UserGoal.GOAL_FREQUENCY_MONTH)) {
+                } else if (freq.equals(UserGoal.GOAL_FREQUENCY_MONTH)) {
                     int goalMonth = c.get(Calendar.MONTH);
                     if (nowMonth == goalMonth) {
                         completedGoals.add(goalId);

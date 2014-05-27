@@ -10,6 +10,6 @@
                  android:layout_width="128dp"
                  android:layout_height="128dp"
                  android:src="@drawable/ic_menu_camera"
-                 android:contentDescription=""/>    
-
+                 android:contentDescription=""/>
+    
 </LinearLayout>
