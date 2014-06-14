@@ -1,5 +1,6 @@
 package han.com.activity.main.fragment;
 
+import android.app.AlertDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
@@ -19,6 +20,7 @@ import han.com.activity.reward.welcome.ActivityRewardWelcome;
 import han.com.datapool.CurrentGoal;
 import han.com.db.DatabaseHandler;
 import han.com.db.Reward;
+import han.com.db.SectionRecord;
 import han.com.db.UserGoal;
 import han.com.utils.MyWidgets;
 import java.util.ArrayList;
@@ -26,6 +28,7 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Map;
+import org.apache.commons.lang3.time.DurationFormatUtils;
 
 /**
  *
@@ -121,8 +124,50 @@ public class FragmentReward extends Fragment {
             }
         });
 
+        LinearLayout settingStat = (LinearLayout) myFragmentView.findViewById(R.id.setting_item_stat);
+        settingStat.setVisibility(View.VISIBLE);
+        settingStat.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                SectionRecord.getAllSectionTime(new SectionRecord.SectionTimeCallback() {
+
+                    public void getResult(List<SectionRecord> records) {
+                        long timeGoal = 0, timeReward = 0, timeCamera = 0, timeShare = 0, lastTime = 0;
+                        String lastSection = "";
+
+                        for (SectionRecord r : records) {
+                            if (lastSection.equals(SectionRecord.Section_Goal)) {
+                                timeGoal += r.getTimeIn() - lastTime;
+                            } else if (lastSection.equals(SectionRecord.Section_Reward)) {
+                                timeReward += r.getTimeIn() - lastTime;
+                            } else if (lastSection.equals(SectionRecord.Section_Camera)) {
+                                timeCamera += r.getTimeIn() - lastTime;
+                            } else if (lastSection.equals(SectionRecord.Section_Share)) {
+                                timeShare += r.getTimeIn() - lastTime;
+                            } else if (lastSection.equals(SectionRecord.Section_App_Out)) {
+                                lastTime = 0;
+                                lastSection = "";
+                                continue;
+                            }
+                            lastTime = r.getTimeIn();
+                            lastSection = r.getSectionName();
+                        }
+
+                        String s = "Duration in Goal section:\n" + DurationFormatUtils.formatDuration(timeGoal, "HH:mm:ss") + "\n\n";
+                        s += "Duration in Reward section:\n" + DurationFormatUtils.formatDuration(timeReward, "HH:mm:ss") + "\n\n";
+                        s += "Duration in Camera section:\n" + DurationFormatUtils.formatDuration(timeCamera, "HH:mm:ss") + "\n\n";
+                        s += "Duration in Share section:\n" + DurationFormatUtils.formatDuration(timeShare, "HH:mm:ss") + "\n\n";
+
+                        new AlertDialog.Builder(getActivity())
+                                .setMessage(s)
+                                .setNegativeButton("ok", null)
+                                .create().show();
+                    }
+                });
+
+            }
+        });
+
         myFragmentView.findViewById(R.id.setting_item_music).setVisibility(View.GONE);
-        myFragmentView.findViewById(R.id.setting_item_stat).setVisibility(View.GONE);
 
         listView = (ListView) myFragmentView.findViewById(R.id.frag_reward_goal_list);
         listView.setDivider(null);

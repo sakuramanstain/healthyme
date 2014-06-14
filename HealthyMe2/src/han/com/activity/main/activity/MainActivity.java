@@ -25,6 +25,7 @@ import han.com.activity.track.reminder.ProgressReminder;
 import han.com.datapool.MyPedometerPreferences;
 import han.com.datapool.MySharedPreferences;
 import han.com.db.DatabaseHandler;
+import han.com.db.SectionRecord;
 import han.com.music.MusicPlayer;
 import han.com.pedometer.Pedometer;
 import han.com.pedometer.StepService;
@@ -75,8 +76,23 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
             @Override
             public void onPageSelected(int position) {
                 actionBar.setSelectedNavigationItem(position);
+                switch (position) {
+                    case 0:
+                        new SectionRecord(SectionRecord.Section_Goal, System.currentTimeMillis(), MainActivity.this).save();
+                        break;
+                    case 1:
+                        new SectionRecord(SectionRecord.Section_Reward, System.currentTimeMillis(), MainActivity.this).save();
+                        break;
+                    case 2:
+                        new SectionRecord(SectionRecord.Section_Camera, System.currentTimeMillis(), MainActivity.this).save();
+                        break;
+                    case 3:
+                        new SectionRecord(SectionRecord.Section_Share, System.currentTimeMillis(), MainActivity.this).save();
+                        break;
+                }
             }
         });
+        new SectionRecord(SectionRecord.Section_Goal, System.currentTimeMillis(), MainActivity.this).save();
 
         ActionBar.Tab tabGoal = actionBar.newTab();
         tabGoal.setIcon(R.drawable.ic_action_check);
@@ -147,6 +163,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     protected void onDestroy() {
         super.onDestroy();
         Log.d(className, "onDestroy");
+        new SectionRecord(SectionRecord.Section_App_Out, System.currentTimeMillis(), MainActivity.this).save();
+
         cleanServices();
         Toast.makeText(this, "bye bye", Toast.LENGTH_SHORT).show();
         hasDestroy = true;

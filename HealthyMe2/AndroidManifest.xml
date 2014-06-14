@@ -28,7 +28,13 @@
     
     <application android:label="Healthy Me"
                  android:icon="@drawable/ic_launcher"
-                 android:allowBackup="true">
+                 android:allowBackup="true"
+                 android:name="com.orm.SugarApp">
+        
+        <meta-data android:name="DATABASE" android:value="section_record.sqlite" />
+        <meta-data android:name="VERSION" android:value="1" />
+        <meta-data android:name="QUERY_LOG" android:value="true" />
+        <meta-data android:name="DOMAIN_PACKAGE_NAME" android:value="han.com.db" />
         
         <activity android:name=".activity.main.activity.MainActivity"
                   android:label="Healthy Me"
