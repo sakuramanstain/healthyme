@@ -37,6 +37,7 @@ import java.util.Map;
 import org.apache.http.Header;
 
 /**
+ * Can view shares when offline.
  *
  * @author hanaldo
  */
